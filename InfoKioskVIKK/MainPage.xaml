@@ -11,6 +11,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -19,7 +20,20 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <RelativePanel>
+        <RelativePanel Grid.Row="0">
+
+            <Button Name="backButton" 
+                    FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xE72B;"
+                    FontSize="30" 
+                    Click="backButton_Click"
+                    Width="50">
+            </Button>
+
+        </RelativePanel>
+        
+        <RelativePanel Grid.Row="1">
+            
             <Button Name="hamburgerButton" 
                     FontFamily="Segoe MDL2 Assets" 
                     Content="&#xE700;"
@@ -27,16 +41,19 @@
                     Click="hamburgerButton_Click"
                     Width="50">
             </Button>
+            
         </RelativePanel>
 
         <SplitView  Name="MySplitView"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     DisplayMode="CompactOverlay"
                     OpenPaneLength="200"
                     CompactPaneLength="50"
                     HorizontalAlignment="Left"
                    >
+            
             <SplitView.Pane>
+                
                 <ListBox SelectionMode="Single"
                          Name="IconsListBox" 
                          SelectionChanged="IconsListBox_SelectionChanged"
