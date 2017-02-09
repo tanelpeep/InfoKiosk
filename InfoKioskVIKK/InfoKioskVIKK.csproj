@@ -101,6 +101,7 @@
     <Compile Include="Pages\Avaleht.xaml.cs">
       <DependentUpon>Avaleht.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\JsonArray.cs" />
     <Compile Include="Pages\Kontakt.xaml.cs">
       <DependentUpon>Kontakt.xaml</DependentUpon>
     </Compile>

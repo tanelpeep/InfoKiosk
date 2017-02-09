@@ -19,7 +19,7 @@
                     </StackPanel>
                 </PivotItem.Header>
                 <StackPanel>
-                    <TextBlock Text="Sisu1"></TextBlock>
+                    <TextBlock Name="sisuBlock" Text="Sisu1"></TextBlock>
                 </StackPanel>
             </PivotItem>
             <PivotItem>
