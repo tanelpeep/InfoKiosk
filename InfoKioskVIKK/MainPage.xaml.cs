@@ -36,5 +36,10 @@ namespace InfoKioskVIKK
         {
             
         }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
