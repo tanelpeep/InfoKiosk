@@ -25,7 +25,8 @@
                     Grid.Column="1"
                     Grid.RowSpan="2"
                     Grid.ColumnSpan="2"
-                    Padding="20">
+                    Padding="20"
+                    Name="contentFrame">
             <Rectangle Fill="AliceBlue"></Rectangle>
         </Frame>
         

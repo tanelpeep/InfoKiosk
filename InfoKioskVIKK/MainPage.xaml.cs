@@ -25,6 +25,7 @@ namespace InfoKioskVIKK
         public MainPage()
         {
             this.InitializeComponent();
+            contentFrame.Navigate(typeof(Pages.Avaleht));
         }
 
         private void hamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -34,7 +35,22 @@ namespace InfoKioskVIKK
 
         private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (AvalehtBoxItem.IsSelected)
+            {
+                contentFrame.Navigate(typeof(Pages.Avaleht));
+            }
+            else if (KontaktidBoxItem.IsSelected)
+            {
+                contentFrame.Navigate(typeof(Pages.Kontakt));
+            }
+            else if (TunniplaanBoxItem.IsSelected)
+            {
+                contentFrame.Navigate(typeof(Pages.Tunniplaan));
+            }
+            else if (UudisedBoxItem.IsSelected)
+            {
+                contentFrame.Navigate(typeof(Pages.Uudised));
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
