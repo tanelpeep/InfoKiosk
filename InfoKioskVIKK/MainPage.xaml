@@ -16,12 +16,20 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <Frame      Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    Padding="20">
+            <Rectangle Fill="AliceBlue"></Rectangle>
+        </Frame>
+        
         <RelativePanel Grid.Row="0">
-
             <Button Name="backButton" 
                     FontFamily="Segoe MDL2 Assets" 
                     Content="&#xE72B;"
@@ -29,11 +37,9 @@
                     Click="backButton_Click"
                     Width="50">
             </Button>
-
         </RelativePanel>
-        
+
         <RelativePanel Grid.Row="1">
-            
             <Button Name="hamburgerButton" 
                     FontFamily="Segoe MDL2 Assets" 
                     Content="&#xE700;"
@@ -46,6 +52,7 @@
 
         <SplitView  Name="MySplitView"
                     Grid.Row="2"
+                    Grid.ColumnSpan="2"
                     DisplayMode="CompactOverlay"
                     OpenPaneLength="200"
                     CompactPaneLength="50"
