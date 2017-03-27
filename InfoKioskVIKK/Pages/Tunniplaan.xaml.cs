@@ -32,20 +32,13 @@ namespace InfoKioskVIKK.Pages
             LaeVeebiandmed();
         }
 
-        public async void LaeVeebiandmed()
+        public void LaeVeebiandmed()
         {
-            var veebileht = new HttpClient();
-            HttpResponseMessage vastus = await veebileht.GetAsync(new Uri("https://vikk.siseveeb.ee/veebilehe_andmed/tunniplaan?nadal=06.02.2017&nimekiri=grupp"));
-            var sisu = await vastus.Content.ReadAsStringAsync();
-
-            var root = JsonConvert.DeserializeObject<RootObject>(sisu);
-            foreach (var grupp in root.grupp)
-            {
-                sisuBlock.Text = sisuBlock.Text + grupp.nimi + System.Environment.NewLine;
-            }
-
-
+            DateTime today = DateTime.Now;
+            String sisu = today.ToString("dd.MM.yyyy");
+            sisuBlock.Text = sisu;
         }
+
         public class Grupp
         {
             public string id { get; set; }
