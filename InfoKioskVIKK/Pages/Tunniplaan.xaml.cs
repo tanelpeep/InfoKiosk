@@ -24,19 +24,62 @@ namespace InfoKioskVIKK.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
     public sealed partial class Tunniplaan : Page
     {
         public Tunniplaan()
         {
             this.InitializeComponent();
-            LaeVeebiandmed();
+            LoadItems();
+            
+            
         }
+        
 
-        public void LaeVeebiandmed()
+        public void LoadItems()
         {
-            DateTime today = DateTime.Now;
-            String sisu = today.ToString("dd.MM.yyyy");
-            sisuBlock.Text = sisu;
+            laeGrupid();
+            laeRuumid();
+            laeOpetajad();
+        }
+        
+        public async void laeGrupid()
+        {
+            VeebileheAndmed andmed = new VeebileheAndmed();
+            string sisu = await andmed.LaeVeebiandmed("nimekiri", "grupp");
+
+            var root = JsonConvert.DeserializeObject<GruppObject>(sisu);
+            int counter = 1;
+            foreach (var grupp in root.grupp)
+            {
+                Button gruppButton = new Button();
+                gruppButton.Content = grupp.nimi;
+                gruppButton.Tag = grupp.id;
+                if (counter == 1)
+                {
+                    GruppPanel1.Children.Add(gruppButton);
+                    counter = 2;
+                }
+                else if (counter == 2)
+                {
+                    GruppPanel2.Children.Add(gruppButton);
+                    counter = 3;
+                }
+                else if (counter == 3)
+                {
+                    GruppPanel3.Children.Add(gruppButton);
+                    counter = 1;
+                }
+
+            }
+        }
+        public async void laeRuumid()
+        {
+
+        }
+        public async void laeOpetajad()
+        {
+
         }
 
         public class Grupp
@@ -45,10 +88,32 @@ namespace InfoKioskVIKK.Pages
             public string nimi { get; set; }
         }
 
-        public class RootObject
+        public class Ruum
+        {
+            public string id { get; set; }
+            public string nimi { get; set; }
+        }
+
+        public class Opetaja
+        {
+            public string id { get; set; }
+            public string nimi { get; set; }
+        }
+
+        public class GruppObject
         {
             public string nadal { get; set; }
             public List<Grupp> grupp { get; set; }
+        }
+        public class RuumObject
+        {
+            public string nadal { get; set; }
+            public List<Ruum> ruum { get; set; }
+        }
+        public class OpetajaObject
+        {
+            public string nadal { get; set; }
+            public List<Opetaja> opetaja { get; set; }
         }
 
     }

@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot >
+        <Pivot>
             <PivotItem>
                 <PivotItem.Header>
                     <StackPanel>
@@ -18,9 +18,22 @@
                         <TextBlock Text="Grupp"></TextBlock>
                     </StackPanel>
                 </PivotItem.Header>
-                <StackPanel>
-                    <TextBlock Name="sisuBlock" Text="Sisu1"></TextBlock>
-                </StackPanel>
+                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Name="GruppPanel1" Grid.Row="0" Orientation="Horizontal">
+                        </StackPanel>
+                        <StackPanel Name="GruppPanel2" Grid.Row="1" Orientation="Horizontal">
+                        </StackPanel>
+                        <StackPanel Name="GruppPanel3" Grid.Row="2" Orientation="Horizontal">
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
@@ -31,9 +44,17 @@
                         <TextBlock Text="Õpetaja"></TextBlock>
                     </StackPanel>
                 </PivotItem.Header>
-                <StackPanel>
-                    <TextBlock Text="Sisu2"></TextBlock>
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Name="OpetajaPanel1" Grid.Row="0" Orientation="Horizontal"></StackPanel>
+                    <StackPanel Name="OpetajaPanel2" Grid.Row="1" Orientation="Horizontal"></StackPanel>
+                    <StackPanel Name="OpetajaPanel3" Grid.Row="2" Orientation="Horizontal"></StackPanel>
+                </Grid>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
@@ -44,9 +65,17 @@
                         <TextBlock Text="Ruum"></TextBlock>
                     </StackPanel>
                 </PivotItem.Header>
-                <StackPanel>
-                    <TextBlock Text="Sisu3"></TextBlock>
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Name="RuumPanel1" Grid.Row="0" Orientation="Horizontal"></StackPanel>
+                    <StackPanel Name="RuumPanel2" Grid.Row="1" Orientation="Horizontal"></StackPanel>
+                    <StackPanel Name="RuumPanel3" Grid.Row="2" Orientation="Horizontal"></StackPanel>
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>
