@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
 //using Windows.Data.Json;
 using Newtonsoft.Json;
+using Windows.UI.Popups;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -53,8 +54,10 @@ namespace InfoKioskVIKK.Pages
             foreach (var grupp in root.grupp)
             {
                 Button gruppButton = new Button();
+                gruppButton.Click += NewButton_Click;
                 gruppButton.Content = grupp.nimi;
                 gruppButton.Tag = grupp.id;
+                gruppButton.Style = (Style)App.Current.Resources["NimekiriNupudStyle"];
                 if (counter == 1)
                 {
                     GruppPanel1.Children.Add(gruppButton);
@@ -73,6 +76,16 @@ namespace InfoKioskVIKK.Pages
 
             }
         }
+
+        private void NewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button newButton = sender as Button;
+            string id = newButton.Tag.ToString();
+
+            var popup = new MessageDialog("Valisid ID: " + id);
+            popup.ShowAsync();
+        }
+
         public async void laeRuumid()
         {
             VeebileheAndmed andmed = new VeebileheAndmed();
@@ -83,8 +96,10 @@ namespace InfoKioskVIKK.Pages
             foreach (var ruum in root.ruum)
             {
                 Button ruumButton = new Button();
+                ruumButton.Click += NewButton_Click;
                 ruumButton.Content = ruum.nimi;
                 ruumButton.Tag = ruum.id;
+                ruumButton.Style = (Style)App.Current.Resources["NimekiriNupudStyle"];
 
                 if (counter == 1)
                 {
@@ -105,7 +120,35 @@ namespace InfoKioskVIKK.Pages
         }
         public async void laeOpetajad()
         {
+            VeebileheAndmed andmed = new VeebileheAndmed();
+            string sisu = await andmed.LaeVeebiandmed("nimekiri", "opetaja");
 
+            var root = JsonConvert.DeserializeObject<OpetajaObject>(sisu);
+            int counter = 1;
+            foreach (var opetaja in root.opetaja)
+            {
+                Button opetajaButton = new Button();
+                opetajaButton.Click += NewButton_Click;
+                opetajaButton.Content = opetaja.nimi;
+                opetajaButton.Tag = opetaja.id;
+                opetajaButton.Style = (Style)App.Current.Resources["NimekiriNupudStyle"];
+
+                if (counter == 1)
+                {
+                    OpetajaPanel1.Children.Add(opetajaButton);
+                    counter = 2;
+                }
+                else if (counter == 2)
+                {
+                    OpetajaPanel2.Children.Add(opetajaButton);
+                    counter = 3;
+                }
+                else if (counter == 3)
+                {
+                    OpetajaPanel3.Children.Add(opetajaButton);
+                    counter = 1;
+                }
+            }
         }
 
         public class Grupp
