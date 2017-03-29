@@ -75,7 +75,33 @@ namespace InfoKioskVIKK.Pages
         }
         public async void laeRuumid()
         {
+            VeebileheAndmed andmed = new VeebileheAndmed();
+            string sisu = await andmed.LaeVeebiandmed("nimekiri","ruum");
 
+            var root = JsonConvert.DeserializeObject<RuumObject>(sisu);
+            int counter = 1;
+            foreach (var ruum in root.ruum)
+            {
+                Button ruumButton = new Button();
+                ruumButton.Content = ruum.nimi;
+                ruumButton.Tag = ruum.id;
+
+                if (counter == 1)
+                {
+                    RuumPanel1.Children.Add(ruumButton);
+                    counter = 2;
+                }
+                else if (counter == 2)
+                {
+                    RuumPanel2.Children.Add(ruumButton);
+                    counter = 3;
+                }
+                else if (counter == 3)
+                {
+                    RuumPanel3.Children.Add(ruumButton);
+                    counter = 1;
+                }
+            }
         }
         public async void laeOpetajad()
         {
